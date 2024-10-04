@@ -1,22 +1,19 @@
-databases:
-  - name: howarts_rails
-    databaseName: howarts_rails
-    user: howarts_rails
-    plan: free
-
 services:
   - type: web
-    name: howarts_rails
-    runtime: ruby
+    name: block-buster-app
+    env: ruby
+    region: oregon
     plan: free
-    buildCommand: "./bin/render-build.sh"
-    startCommand: "bundle exec rails server"
+    buildCommand: "bundle install && yarn install && bundle exec rake assets:precompile db:migrate"
+    startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: howarts_rails
+          name: block-buster-app-db
           property: connectionString
-      - key: RAILS_MASTER_KEY
-        sync: false
-      - key: WEB_CONCURRENCY
-        value: 2
+
+databases:
+  - name: block-buster-app-db
+    engine: postgresql
+    version: 14
+    starterPlan: true

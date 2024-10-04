@@ -1,0 +1,31 @@
+<% content_for :title, "Bienvenido al Sistema" %>
+
+<!-- Sección principal con imagen de fondo -->
+<div class="home-container d-flex align-items-center justify-content-center text-center">
+  <div class="welcome-message">
+    <h1 class="display-4 text-white mb-4">¡Bienvenido a Block Buster App!</h1>
+    <p class="lead text-white mb-4">Gestiona clientes y películas de manera eficiente y fácil.</p>
+    
+    <!-- Botones de navegación -->
+    <div class="d-flex justify-content-center gap-3">
+      <%= link_to 'Ver Clientes', clientes_path, class: 'btn btn-lg btn-primary d-inline-flex align-items-center' %>
+      <%= link_to 'Ver Películas', peliculas_path, class: 'btn btn-lg btn-success d-inline-flex align-items-center' %>
+    </div>
+  </div>
+</div>
+
+<!-- CSS personalizado para el fondo -->
+<style>
+  .home-container {
+    height: 100vh;
+    background-image: url('https://www.latercera.com/resizer/FW3HoFSavwsu52yAUNjpJ_-M6Ow=/arc-anglerfish-arc2-prod-copesa/public/BFAV244FCJGGVGVGXKKZDRIW2U.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .welcome-message {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 10px;
+  }
+</style>

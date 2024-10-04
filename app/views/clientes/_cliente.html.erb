@@ -1,4 +1,4 @@
-<div id="<%= dom_id cliente %>" class="card mb-3 shadow-sm">
+<div id="<%= dom_id cliente %>" class="card mb-3 shadow-sm same-height">
   <div class="card-header bg-primary text-white">
     <h5 class="card-title mb-0">
       <i class="fas fa-user"></i> <%= cliente.name %>
@@ -11,15 +11,23 @@
     </p>
   </div>
 
-  <div class="card-footer text-center">
-    <!-- Botón para editar cliente -->
-    <%= link_to edit_cliente_path(cliente), class: 'btn btn-warning me-2' do %>
-      <i class="fas fa-edit"></i> Editar
+  <div class="card-footer d-flex justify-content-between">
+    <!-- Botón para ver cliente -->
+    <%= link_to cliente, class: 'btn btn-info d-inline-flex align-items-center' do %>
+      <i class="fas fa-eye me-2"></i>
     <% end %>
 
-    <!-- Botón para eliminar cliente -->
-    <%= button_to cliente, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-danger' do %>
-      <i class="fas fa-trash"></i> Eliminar
-    <% end %>
+    <!-- Grupo de botones de acciones (Editar, Eliminar) -->
+    <div class="d-flex justify-content-end gap-2">
+      <!-- Botón para editar cliente -->
+      <%= link_to edit_cliente_path(cliente), class: 'btn btn-warning d-inline-flex align-items-center' do %>
+        <i class="fas fa-edit me-2"></i>
+      <% end %>
+
+      <!-- Botón para eliminar cliente -->
+      <%= button_to cliente, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-danger d-inline-flex align-items-center' do %>
+        <i class="fas fa-trash me-2"></i>
+      <% end %>
+    </div>
   </div>
 </div>

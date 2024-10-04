@@ -1,0 +1,11 @@
+/* Estilo para asegurar que las tarjetas tengan el mismo tamaño mínimo */
+.same-height {
+    min-height: 300px; /* Ajusta este valor según sea necesario */
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  

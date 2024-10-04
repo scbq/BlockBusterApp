@@ -1,11 +1,13 @@
-<% content_for :title, "New cliente" %>
+<% content_for :title, "Nuevo Cliente" %>
 
-<h1>New cliente</h1>
+<h1 class="text-center my-4">Nuevo Cliente</h1>
 
+<!-- Renderizamos el formulario de cliente -->
 <%= render "form", cliente: @cliente %>
 
-<br>
-
-<div>
-  <%= link_to "Back to clientes", clientes_path %>
+<!-- Botón para volver a la lista de clientes -->
+<div class="text-center mt-4">
+  <%= link_to clientes_path, class: 'btn btn-secondary d-inline-flex align-items-center' do %>
+    <i class="fas fa-arrow-left me-2"></i> Volver a Clientes
+  <% end %>
 </div>

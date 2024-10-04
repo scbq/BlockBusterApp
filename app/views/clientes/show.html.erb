@@ -1,10 +1,25 @@
-<p style="color: green"><%= notice %></p>
+<!-- Notificación si existe -->
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
 
+<!-- Renderizar los detalles del cliente -->
 <%= render @cliente %>
 
-<div>
-  <%= link_to "Edit this cliente", edit_cliente_path(@cliente) %> |
-  <%= link_to "Back to clientes", clientes_path %>
+<!-- Botones para editar, eliminar y volver -->
+<div class="text-center mt-4">
+  <!-- Botón para editar el cliente -->
+  <%= link_to edit_cliente_path(@cliente), class: 'btn btn-warning me-2 d-inline-flex align-items-center' do %>
+    <i class="fas fa-edit me-2"></i> Editar Cliente
+  <% end %>
 
-  <%= button_to "Destroy this cliente", @cliente, method: :delete %>
+  <!-- Botón para volver a la lista de clientes -->
+  <%= link_to clientes_path, class: 'btn btn-secondary me-2 d-inline-flex align-items-center' do %>
+    <i class="fas fa-arrow-left me-2"></i> Volver a Clientes
+  <% end %>
+
+  <!-- Botón para eliminar el cliente -->
+  <%= button_to @cliente, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-danger d-inline-flex align-items-center' do %>
+    <i class="fas fa-trash me-2"></i> Eliminar Cliente
+  <% end %>
 </div>

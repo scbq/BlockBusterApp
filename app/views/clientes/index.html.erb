@@ -1,16 +1,37 @@
-<p style="color: green"><%= notice %></p>
+<!-- Notificaciones en verde si existen -->
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
 
 <% content_for :title, "Clientes" %>
 
-<h1>Clientes</h1>
+<!-- Título de la página -->
+<h1 class="text-center my-4">Clientes</h1>
 
-<div id="clientes">
+<!-- Listado de clientes -->
+<div id="clientes" class="row">
   <% @clientes.each do |cliente| %>
-    <%= render cliente %>
-    <p>
-      <%= link_to "Show this cliente", cliente %>
-    </p>
+    <div class="col-md-4">
+      <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+          <!-- Renderizamos la vista parcial del cliente -->
+          <%= render cliente %>
+
+          <!-- Botón para mostrar el cliente -->
+          <div class="text-center mt-3">
+            <%= link_to cliente_path(cliente), class: 'btn btn-info d-inline-flex align-items-center' do %>
+              <i class="fas fa-eye me-2"></i> Ver Cliente
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New cliente", new_cliente_path %>
+<!-- Botón para agregar nuevo cliente -->
+<div class="text-center mt-4">
+  <%= link_to new_cliente_path, class: 'btn btn-success d-inline-flex align-items-center' do %>
+    <i class="fas fa-plus-circle me-2"></i> Nuevo Cliente
+  <% end %>
+</div>

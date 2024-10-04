@@ -1,11 +1,14 @@
-<% content_for :title, "New pelicula" %>
+<% content_for :title, "Nueva Película" %>
 
-<h1>New pelicula</h1>
+<!-- Título centrado -->
+<h1 class="text-center my-4">Nueva Película</h1>
 
+<!-- Renderizamos el formulario de la película -->
 <%= render "form", pelicula: @pelicula %>
 
-<br>
-
-<div>
-  <%= link_to "Back to peliculas", peliculas_path %>
+<!-- Botón para volver a la lista de películas -->
+<div class="text-center mt-4">
+  <%= link_to peliculas_path, class: 'btn btn-secondary d-inline-flex align-items-center' do %>
+    <i class="fas fa-arrow-left me-2"></i> Volver a Películas
+  <% end %>
 </div>

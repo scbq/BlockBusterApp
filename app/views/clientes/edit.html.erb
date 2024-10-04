@@ -1,12 +1,18 @@
-<% content_for :title, "Editing cliente" %>
+<% content_for :title, "Editar Cliente" %>
 
-<h1>Editing cliente</h1>
+<h1 class="text-center my-4">Editar Cliente</h1>
 
+<!-- Renderizamos el formulario de cliente -->
 <%= render "form", cliente: @cliente %>
 
-<br>
+<div class="text-center mt-4">
+  <!-- Botón para mostrar el cliente -->
+  <%= link_to cliente_path(@cliente), class: 'btn btn-info me-2' do %>
+    <i class="fas fa-eye"></i> Ver Cliente
+  <% end %>
 
-<div>
-  <%= link_to "Show this cliente", @cliente %> |
-  <%= link_to "Back to clientes", clientes_path %>
+  <!-- Botón para volver a la lista de clientes -->
+  <%= link_to clientes_path, class: 'btn btn-secondary' do %>
+    <i class="fas fa-arrow-left"></i> Volver a Clientes
+  <% end %>
 </div>

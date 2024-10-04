@@ -1,22 +1,25 @@
-<div id="<%= dom_id pelicula %>">
-  <p>
-    <strong>Title:</strong>
-    <%= pelicula.title %>
-  </p>
+<div id="<%= dom_id pelicula %>" class="card mb-3 shadow-sm">
+  <div class="card-header bg-primary text-white">
+    <h5 class="card-title mb-0">
+      <i class="fas fa-film"></i> <%= pelicula.title %>
+    </h5>
+  </div>
 
-  <p>
-    <strong>Genre:</strong>
-    <%= pelicula.genre %>
-  </p>
+  <div class="card-body">
+    <!-- Género de la película -->
+    <p class="card-text">
+      <i class="fas fa-tags"></i> <strong>Género:</strong> <%= pelicula.genre %>
+    </p>
 
-  <p>
-    <strong>Year:</strong>
-    <%= pelicula.year %>
-  </p>
+    <!-- Año de estreno de la película -->
+    <p class="card-text">
+      <i class="fas fa-calendar-alt"></i> <strong>Año de estreno:</strong> <%= pelicula.year %>
+    </p>
 
-  <p>
-    <strong>Cliente:</strong>
-    <%= pelicula.cliente_id %>
-  </p>
-
+    <!-- Cliente relacionado con la película -->
+    <p class="card-text">
+      <i class="fas fa-user"></i> <strong>Cliente:</strong>
+      <%= link_to pelicula.cliente.name, cliente_path(pelicula.cliente) %>
+    </p>
+  </div>
 </div>

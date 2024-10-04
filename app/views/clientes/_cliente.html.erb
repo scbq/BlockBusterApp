@@ -1,12 +1,25 @@
-<div id="<%= dom_id cliente %>">
-  <p>
-    <strong>Name:</strong>
-    <%= cliente.name %>
-  </p>
+<div id="<%= dom_id cliente %>" class="card mb-3 shadow-sm">
+  <div class="card-header bg-primary text-white">
+    <h5 class="card-title mb-0">
+      <i class="fas fa-user"></i> <%= cliente.name %>
+    </h5>
+  </div>
 
-  <p>
-    <strong>Email:</strong>
-    <%= cliente.email %>
-  </p>
+  <div class="card-body">
+    <p class="card-text">
+      <i class="fas fa-envelope"></i> <strong>Email:</strong> <%= cliente.email %>
+    </p>
+  </div>
 
+  <div class="card-footer text-center">
+    <!-- Botón para editar cliente -->
+    <%= link_to edit_cliente_path(cliente), class: 'btn btn-warning me-2' do %>
+      <i class="fas fa-edit"></i> Editar
+    <% end %>
+
+    <!-- Botón para eliminar cliente -->
+    <%= button_to cliente, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-danger' do %>
+      <i class="fas fa-trash"></i> Eliminar
+    <% end %>
+  </div>
 </div>

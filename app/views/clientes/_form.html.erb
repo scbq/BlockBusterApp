@@ -1,27 +1,29 @@
-<%= form_with(model: cliente) do |form| %>
+<%= form_with(model: cliente, local: true, class: 'needs-validation') do |form| %>
   <% if cliente.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <h4 class="alert-heading"><%= pluralize(cliente.errors.count, "error") %> impide guardar este cliente:</h4>
       <ul>
-        <% cliente.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% cliente.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <!-- Campo para el nombre -->
+  <div class="form-group mb-3">
+    <%= form.label :name, 'Nombre', class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control', required: true %>
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+  <!-- Campo para el email -->
+  <div class="form-group mb-3">
+    <%= form.label :email, 'Correo Electrónico', class: 'form-label' %>
+    <%= form.email_field :email, class: 'form-control', required: true %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <!-- Botón para enviar el formulario -->
+  <div class="form-group mt-4 text-center">
+    <%= form.submit 'Guardar Cliente', class: 'btn btn-primary' %>
   </div>
 <% end %>

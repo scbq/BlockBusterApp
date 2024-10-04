@@ -1,25 +1,32 @@
-<%= form_with(model: pelicula, local: true) do |form| %>
-  <div class="form-group">
-    <%= form.label :title, 'Título de la Película' %>
-    <%= form.text_field :title, class: 'form-control' %>
-  </div>
-  
-  <div class="form-group">
-    <%= form.label :genre, 'Género' %>
-    <%= form.text_field :genre, class: 'form-control' %>
+<%= form_with(model: pelicula, local: true, class: 'needs-validation') do |form| %>
+
+  <!-- Campo para el título de la película -->
+  <div class="form-group mb-3">
+    <%= form.label :title, 'Título de la Película', class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control', required: true %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :year, 'Año de estreno' %>
-    <%= form.number_field :year, class: 'form-control' %>
+  <!-- Campo para el género -->
+  <div class="form-group mb-3">
+    <%= form.label :genre, 'Género', class: 'form-label' %>
+    <%= form.text_field :genre, class: 'form-control', required: true %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :cliente_id, 'Cliente' %>
+  <!-- Campo para el año de estreno -->
+  <div class="form-group mb-3">
+    <%= form.label :year, 'Año de estreno', class: 'form-label' %>
+    <%= form.number_field :year, class: 'form-control', required: true %>
+  </div>
+
+  <!-- Campo para seleccionar el cliente -->
+  <div class="form-group mb-3">
+    <%= form.label :cliente_id, 'Cliente', class: 'form-label' %>
     <%= form.collection_select :cliente_id, Cliente.all, :id, :name, prompt: 'Selecciona un cliente', class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit 'Guardar Película', class: 'btn btn-primary' %>
+  <!-- Botón de envío del formulario -->
+  <div class="text-center mt-4">
+    <%= form.submit 'Guardar Película', class: 'btn btn-primary d-inline-flex align-items-center' %>
   </div>
+
 <% end %>

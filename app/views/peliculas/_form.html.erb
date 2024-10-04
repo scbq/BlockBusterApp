@@ -1,32 +1,25 @@
-<%= form_with(model: pelicula, local: true, class: 'needs-validation') do |form| %>
-
-  <!-- Campo para el título de la película -->
-  <div class="form-group mb-3">
-    <%= form.label :title, 'Título de la Película', class: 'form-label' %>
-    <%= form.text_field :title, class: 'form-control', required: true %>
+<%= form_with(model: pelicula, local: true) do |form| %>
+  <div class="form-group">
+    <%= form.label :title, 'Título de la Película' %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :genre, 'Género' %>
+    <%= form.text_field :genre, class: 'form-control' %>
   </div>
 
-  <!-- Campo para el género -->
-  <div class="form-group mb-3">
-    <%= form.label :genre, 'Género', class: 'form-label' %>
-    <%= form.text_field :genre, class: 'form-control', required: true %>
+  <div class="form-group">
+    <%= form.label :year, 'Año de estreno' %>
+    <%= form.number_field :year, class: 'form-control' %>
   </div>
 
-  <!-- Campo para el año de estreno -->
-  <div class="form-group mb-3">
-    <%= form.label :year, 'Año de estreno', class: 'form-label' %>
-    <%= form.number_field :year, class: 'form-control', required: true %>
+  <div class="form-group">
+    <%= form.label :image_url, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOiHtEyekPRJZw_eu2-egjbWlgYIS-Xp9yBg&s' %>
+    <%= form.text_field :image_url, class: 'form-control' %>
   </div>
 
-  <!-- Campo para seleccionar el cliente -->
-  <div class="form-group mb-3">
-    <%= form.label :cliente_id, 'Cliente', class: 'form-label' %>
-    <%= form.collection_select :cliente_id, Cliente.all, :id, :name, prompt: 'Selecciona un cliente', class: 'form-control' %>
+  <div class="actions">
+    <%= form.submit 'Guardar Película', class: 'btn btn-primary' %>
   </div>
-
-  <!-- Botón de envío del formulario -->
-  <div class="text-center mt-4">
-    <%= form.submit 'Guardar Película', class: 'btn btn-primary d-inline-flex align-items-center' %>
-  </div>
-
 <% end %>

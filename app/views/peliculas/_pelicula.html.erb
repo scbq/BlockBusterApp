@@ -1,4 +1,7 @@
-<div id="<%= dom_id pelicula %>" class="card mb-3 shadow-sm same-height">
+<div id="<%= dom_id pelicula %>" class="card mb-3 shadow-sm">
+  <% if pelicula.image_url.present? %>
+    <img src="<%= pelicula.image_url %>" class="card-img-top" alt="Imagen de <%= pelicula.title %>">
+  <% end %>
   <div class="card-header bg-primary text-white">
     <h5 class="card-title mb-0">
       <i class="fas fa-film"></i> <%= pelicula.title %>
@@ -7,31 +10,30 @@
 
   <div class="card-body">
     <p class="card-text">
-      <i class="fas fa-film"></i> <strong>Género:</strong> <%= pelicula.genre %>
+      <i class="fas fa-theater-masks"></i> <strong>Género:</strong> <%= pelicula.genre %>
     </p>
     <p class="card-text">
       <i class="fas fa-calendar-alt"></i> <strong>Año:</strong> <%= pelicula.year %>
     </p>
   </div>
 
-  <!-- Mostrar los botones solo si no estamos en la vista individual -->
-  <% unless current_page?(pelicula_path(pelicula)) %>
-    <div class="card-footer d-flex justify-content-between">
-      <!-- Botón para ver película -->
-      <%= link_to pelicula, class: 'btn btn-info d-inline-flex align-items-center' do %>
-        <i class="fas fa-eye me-2"></i> Ver
+  <div class="card-footer d-flex justify-content-between">
+    <!-- Botón para ver película -->
+    <%= link_to pelicula, class: 'btn btn-info d-inline-flex align-items-center' do %>
+      <i class="fas fa-eye me-2"></i>
+    <% end %>
+
+    <!-- Grupo de botones de acciones (Editar, Eliminar) -->
+    <div class="d-flex justify-content-end gap-2">
+      <!-- Botón para editar película -->
+      <%= link_to edit_pelicula_path(pelicula), class: 'btn btn-warning d-inline-flex align-items-center' do %>
+        <i class="fas fa-edit me-2"></i>
       <% end %>
 
-      <!-- Botones para editar y eliminar película -->
-      <div class="d-flex gap-2">
-        <%= link_to edit_pelicula_path(pelicula), class: 'btn btn-warning d-inline-flex align-items-center' do %>
-          <i class="fas fa-edit me-2"></i> Editar
-        <% end %>
-
-        <%= button_to pelicula, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-danger d-inline-flex align-items-center' do %>
-          <i class="fas fa-trash me-2"></i> Eliminar
-        <% end %>
-      </div>
+      <!-- Botón para eliminar película -->
+      <%= button_to pelicula, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-danger d-inline-flex align-items-center' do %>
+        <i class="fas fa-trash me-2"></i>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

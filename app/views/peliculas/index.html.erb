@@ -1,37 +1,24 @@
-<!-- Notificación con estilo Bootstrap -->
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-
 <% content_for :title, "Películas" %>
 
-<!-- Título de la página -->
-<h1 class="text-center my-4">Películas</h1>
+<h1 class="display-4 text-center mb-4">Películas</h1>
 
-<!-- Listado de películas -->
+<!-- Barra de búsqueda -->
+<div class="d-flex justify-content-between mb-4">
+  <%= form_with url: peliculas_path, method: :get, class: 'input-group' do %>
+    <%= text_field_tag :query, params[:query], placeholder: "Buscar películas...", class: 'form-control', aria: { label: 'Buscar películas' } %>
+    <button class="btn btn-primary" type="submit">
+      <i class="fas fa-search"></i> Buscar
+    </button>
+  <% end %>
+
+  <!-- Botón para volver al home -->
+  <%= link_to 'Home', root_path, class: 'btn btn-secondary ms-3' %>
+</div>
+
 <div id="peliculas" class="row">
   <% @peliculas.each do |pelicula| %>
     <div class="col-md-4">
-      <div class="card mb-3 shadow-sm">
-        <div class="card-body">
-          <!-- Renderizamos la vista parcial de la película -->
-          <%= render pelicula %>
-
-          <!-- Botón para ver la película -->
-          <div class="text-center mt-3">
-            <%= link_to pelicula_path(pelicula), class: 'btn btn-info d-inline-flex align-items-center' do %>
-              <i class="fas fa-eye me-2"></i> Ver Película
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <%= render pelicula %>
     </div>
-  <% end %>
-</div>
-
-<!-- Botón para agregar nueva película -->
-<div class="text-center mt-4">
-  <%= link_to new_pelicula_path, class: 'btn btn-success d-inline-flex align-items-center' do %>
-    <i class="fas fa-plus-circle me-2"></i> Nueva Película
   <% end %>
 </div>

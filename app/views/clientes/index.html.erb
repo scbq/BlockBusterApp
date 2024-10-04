@@ -1,5 +1,20 @@
 <% content_for :title, "Clientes" %>
+
 <h1 class="display-4 text-center mb-4">Clientes</h1>
+
+<!-- Barra de búsqueda -->
+<div class="d-flex justify-content-between mb-4">
+  <%= form_with url: clientes_path, method: :get, class: 'input-group' do %>
+    <%= text_field_tag :query, params[:query], placeholder: "Buscar clientes...", class: 'form-control', aria: { label: 'Buscar clientes' } %>
+    <button class="btn btn-primary" type="submit">
+      <i class="fas fa-search"></i> Buscar
+    </button>
+  <% end %>
+
+  <!-- Botón para volver al home -->
+  <%= link_to 'Home', root_path, class: 'btn btn-secondary ms-3' %>
+</div>
+
 <div id="clientes" class="row">
   <% @clientes.each do |cliente| %>
     <div class="col-md-4">

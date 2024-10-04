@@ -16,12 +16,39 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+
   <body>
     <!-- Aplicar padding/margen solo si no estamos en el Home -->
     <% unless current_page?(root_path) %>
       <div class="container mt-4">
-      <% end %>
+    <% end %>
       <%= yield %>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    </body>
-  </html>
+    <% unless current_page?(root_path) %>
+      </div>
+    <% end %>
+
+    <!-- Footer fuera del container para que cubra todo el ancho -->
+    <footer class="bg-dark text-white mt-auto py-3 w-100">
+      <div class="container d-flex justify-content-between align-items-center flex-wrap">
+        <div>
+          <h5 class="mb-1">BlockBuster App</h5>
+          <small>© 2024 Todos los derechos reservados.</small>
+        </div>
+
+        <div class="d-flex gap-3">
+          <a href="https://www.facebook.com" class="text-white" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook fa-lg"></i>
+          </a>
+          <a href="https://www.twitter.com" class="text-white" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter fa-lg"></i>
+          </a>
+          <a href="https://www.instagram.com" class="text-white" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram fa-lg"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

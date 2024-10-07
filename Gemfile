@@ -43,7 +43,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # Use sqlite3 as the database for Active Record in development/test
-  gem "sqlite3", "~> 1.4"
+  gem "sqlite3", "~> 2.1"
 end
 
 group :test do

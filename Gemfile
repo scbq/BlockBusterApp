@@ -68,4 +68,4 @@ group :production do
 end
 
 # Add Faker gem for generating fake data
-gem "faker", "~> 3.4"
+gem "faker", "~> 3.5"

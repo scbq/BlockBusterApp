@@ -62,7 +62,7 @@ end
 
 group :production do
   # Use PostgreSQL as the database for Active Record in production
-  gem "pg", "~> 1.1"
+  gem "pg", "~> 1.5"
   # Handle static assets and logging on Render/Heroku
   gem "rails_12factor"
 end
